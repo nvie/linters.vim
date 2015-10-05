@@ -129,6 +129,11 @@ if executable("jshint")
 	call s:DefineLinter("javascript", "jshint %s > %s", ['%f: line %l, col %c, %m'])
 endif
 
+" jscs integration for linting JavaScript
+if executable("jscs")
+	call s:DefineLinter("javascript", "jscs -r unix %s > %s", ['%f:%l:%c: %m'])
+endif
+
 " coffeelint integration for linting coffeescript
 if executable("coffeelint")
 	call s:DefineLinter("coffee", "coffeelint --csv %s > %s", ['%f,%l,error,%m'])
